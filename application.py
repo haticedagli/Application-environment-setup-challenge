@@ -12,6 +12,11 @@ def hello_world():
   score = storage.score()
   return "Hello Devops 123, %d!" % score
 
+@application.route('/scores')
+def getScores():
+  storage = Storage()
+  return storage.getAllScores()
+
 class Storage():
   def __init__(self):
     self.db = MySQLdb.connect(
@@ -28,6 +33,7 @@ class Storage():
   def populate(self):
     cur = self.db.cursor()
     cur.execute("INSERT INTO scores(score) VALUES(1234)")
+    self.db.commit()
 
   def score(self):
     cur = self.db.cursor()
@@ -35,5 +41,11 @@ class Storage():
     row = cur.fetchone()
     return row[0]
 
+  def getAllScores(self):
+    cur = self.db.cursor()
+    cur.execute("SELECT * FROM scores")
+    row = cur.fetchall()
+    return "Total row count -> %d" % cur.rowcount
+    
 if __name__ == "__main__":
-  application.run(host='0.0.0.0', port=5001)
+  application.run(host='0.0.0.0', port=8080)
