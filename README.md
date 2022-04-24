@@ -1,5 +1,5 @@
 
-# Application-environment-setup-challenge
+# Application Environment Setup Challenge
 
 The purpose of this application is to dockerize a python flask application and launch it with a single command.
 
@@ -19,7 +19,7 @@ Just run the command below to get the app up and running with all its dependenci
 docker-compose up
 ```
 
-If you just want to run the application itself without running mySQL, you can use the command below.
+If you just want to run the application itself without running MySQL, you can use the command below.
 
 ```
 docker run
