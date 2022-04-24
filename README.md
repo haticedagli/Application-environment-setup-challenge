@@ -25,6 +25,8 @@ If you just want to run the application itself without running MySQL, you can us
 docker run
 ```
 
+The application will stand up on port 8080. It will be accessible at http://localhost:8080.
+
 ## Built With
 
 * [Python](https://www.python.org/) - Programming language
