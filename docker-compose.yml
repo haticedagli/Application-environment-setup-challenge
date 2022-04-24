@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app:
+    build: ./
+    links:
+      - db
+    ports:
+      - "5001:5000"
+    environment:
+      MYSQL_USERNAME: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_INSTANCE_NAME: ${MYSQL_DATABASE}
+      MYSQL_PORT_3306_TCP_ADDR: ${MYSQL_HOSTNAME}
+      MYSQL_PORT_3306_TCP_PORT: ${MYSQL_TCP_PORT}
+  db:
+    image: mysql:8.0.21
+    hostname: ${MYSQL_HOSTNAME}
+    ports:
+      - "30000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_TCP_PORT: ${MYSQL_TCP_PORT}
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
