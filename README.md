@@ -19,6 +19,12 @@ Just run the command below to get the app up and running with all its dependenci
 docker-compose up
 ```
 
+If you just want to run the application itself without running mySQL, you can use the command below.
+
+```
+docker run
+```
+
 ## Built With
 
 * [Python](https://www.python.org/) - Programming language
